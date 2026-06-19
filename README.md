@@ -6,7 +6,7 @@
 
 ###### 
 
-###### This project implements an \*\*8-Bit Arithmetic Logic Unit (ALU) using Verilog HDL. The ALU performs arithmetic, logical, and shift operations based on a 3-bit select signal (SEL). The design was functionally verified using Xilinx Vivado through simulation and waveform analysis.
+###### This project implements an \*\*8-Bit Arithmetic Logic Unit (ALU)\*\* using Verilog HDL. The ALU performs arithmetic, logical, and shift operations based on a 3-bit select signal (SEL). The design was functionally verified using Xilinx Vivado through simulation and waveform analysis.
 
 ###### 
 
