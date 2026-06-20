@@ -1,341 +1,199 @@
-## **# 8-Bit ALU Design Using Verilog HDL**
+# 8-Bit ALU Design Using Verilog HDL
 
-###### 
+## Project Overview
 
-### **## Project Overview**
+This project implements an **8-Bit Arithmetic Logic Unit (ALU)** using **Verilog HDL**. The ALU performs arithmetic, logical, and shift operations based on a 3-bit select signal (`SEL`). The design was functionally verified using **Xilinx Vivado** through simulation and waveform analysis.
 
-###### 
+---
 
-###### This project implements an \*\*8-Bit Arithmetic Logic Unit (ALU)\*\* using Verilog HDL. The ALU performs arithmetic, logical, and shift operations based on a 3-bit select signal (SEL). The design was functionally verified using Xilinx Vivado through simulation and waveform analysis.
+## Features
 
-###### 
+The ALU supports the following operations:
 
-###### 
+| SEL | Operation           |
+| --- | ------------------- |
+| 000 | Addition (A + B)    |
+| 001 | Subtraction (A - B) |
+| 010 | Bitwise AND         |
+| 011 | Bitwise OR          |
+| 100 | Bitwise XOR         |
+| 101 | Bitwise NOT         |
+| 110 | Left Shift          |
+| 111 | Right Shift         |
 
-### **## Features**
+---
 
-###### 
+## Tools Used
 
-###### The ALU supports the following operations:
+* Verilog HDL
+* Xilinx Vivado 2025.2
+* GitHub
+* Windows 11
 
-###### 
+---
 
-###### | SEL | Operation           |
+## Project Structure
 
-###### | --- | ------------------- |
+```text
+8-bit-ALU-Verilog/
+│
+├── src/
+│   ├── adder.v
+│   ├── subtractor.v
+│   ├── and_gate.v
+│   ├── or_gate.v
+│   ├── xor_gate.v
+│   ├── not_gate.v
+│   ├── shifter.v
+│   └── alu_top.v
+│
+├── testbench/
+│   └── alu_tb.v
+│
+├── images/
+│   ├── block_diagram.png
+│   ├── waveform_simulation.png
+│   ├── test_vectors_waveform.png
+│   ├── rtl_schematic.png
+│   └── adder_rtl.png
+│
+├── report/
+│   └── project_report.pdf
+│
+└── README.md
+```
 
-###### | 000 | Addition (A + B)    |
+---
 
-###### | 001 | Subtraction (A - B) |
+## Block Diagram
 
-###### | 010 | Bitwise AND         |
+The ALU accepts two 8-bit inputs (`A` and `B`) and a 3-bit select signal (`SEL`). Based on the select signal, the ALU performs the selected operation and generates an 8-bit result.
 
-###### | 011 | Bitwise OR          |
+![Block Diagram](images/block_diagram.png)
 
-###### | 100 | Bitwise XOR         |
+---
 
-###### | 101 | Bitwise NOT         |
+## Inputs and Outputs
 
-###### | 110 | Left Shift          |
+### Inputs
 
-###### | 111 | Right Shift         |
+| Signal | Width | Description      |
+| ------ | ----- | ---------------- |
+| A      | 8-bit | First Operand    |
+| B      | 8-bit | Second Operand   |
+| SEL    | 3-bit | Operation Select |
 
-###### 
+### Output
 
-###### 
+| Signal | Width | Description |
+| ------ | ----- | ----------- |
+| RESULT | 8-bit | ALU Output  |
 
-### **## Tools Used**
+---
 
-###### 
+## Verilog Modules
 
-* ###### Verilog HDL
-* ###### Xilinx Vivado 2025.2
-* ###### GitHub
-* ###### Windows 11
+The design follows a modular approach.
 
-###### 
+### Modules
 
-###### 
+* adder.v
+* subtractor.v
+* and_gate.v
+* or_gate.v
+* xor_gate.v
+* not_gate.v
+* shifter.v
+* alu_top.v
 
-### **## Project Structure**
+The top-level module (`alu_top.v`) integrates all submodules and selects the desired operation according to the value of `SEL`.
 
-###### 
+---
 
-###### 8-bit-ALU-Verilog/
+## Testbench Verification
 
-###### │
+A dedicated testbench (`alu_tb.v`) was created to verify the functionality of all ALU operations.
 
-###### ├── src/
+### Test Vectors
 
-###### │   ├── adder.v
+| Test No. | A   | B   | SEL | Operation   | Expected Output |
+| -------- | --- | --- | --- | ----------- | --------------- |
+| 1        | 15  | 15  | 000 | ADD         | 30              |
+| 2        | 255 | 1   | 000 | ADD         | 0 (overflow)    |
+| 3        | 20  | 10  | 001 | SUB         | 10              |
+| 4        | 50  | 25  | 001 | SUB         | 25              |
+| 5        | 170 | 240 | 010 | AND         | 160             |
+| 6        | 170 | 240 | 011 | OR          | 250             |
+| 7        | 170 | 240 | 100 | XOR         | 90              |
+| 8        | 170 | X   | 101 | NOT         | 85              |
+| 9        | 15  | X   | 110 | LEFT SHIFT  | 30              |
+| 10       | 15  | X   | 111 | RIGHT SHIFT | 7               |
 
-###### │   ├── subtractor.v
+---
 
-###### │   ├── and\_gate.v
+## Simulation Results
 
-###### │   ├── or\_gate.v
+Behavioral simulation was successfully performed in Vivado.
 
-###### │   ├── xor\_gate.v
+All operations produced the expected outputs.
 
-###### │   ├── not\_gate.v
+### Waveform
 
-###### │   ├── shifter.v
+![Waveform](images/waveform_simulation.png)
 
-###### │   └── alu\_top.v
+### Test Vector Waveform
 
-###### │
+![Test Vectors](images/test_vectors_waveform.png)
 
-###### ├── testbench/
+---
 
-###### │   └── alu\_tb.v
+## RTL Schematic
 
-###### │
+### ALU RTL Schematic
 
-###### ├── images/
+![RTL Schematic](images/rtl_schematic.png)
 
-###### │   ├── block\_diagram.png
+### Adder RTL Schematic
 
-###### │   ├── waveform\_simulation.png
+![Adder RTL](images/adder_rtl.png)
 
-###### │   ├── test\_vectors\_waveform.png
+---
 
-###### │   ├── rtl\_schematic.png
+## Observations
 
-###### │   └── adder\_rtl.png
+* Addition and subtraction operations produced correct arithmetic results.
+* Logical operations (AND, OR, XOR, NOT) behaved as expected.
+* Shift operations correctly shifted the input data by one bit position.
+* The modular design improved readability and maintainability.
+* Simulation results matched the expected outputs for all test cases.
 
-###### │
+---
 
-###### ├── report/
+## Applications
 
-###### │   └── project\_report.pdf
+* Microprocessors
+* CPUs
+* Embedded Systems
+* FPGA-Based Designs
+* Digital Signal Processing
+* Educational Digital Design Projects
 
-###### │
+---
 
-###### └── README.md
+## Conclusion
 
-###### 
+An 8-Bit ALU was successfully designed and verified using Verilog HDL. The ALU performs arithmetic, logical, and shift operations selected through a 3-bit control signal. Functional verification was completed through simulation and waveform analysis in Vivado.
 
-###### 
+This project demonstrates fundamental digital design concepts, modular hardware development, and verification techniques used in FPGA and ASIC design flows.
 
-### **## Block Diagram**
+---
 
-###### 
+## Author
 
-###### The ALU accepts two 8-bit inputs (A and B) and a 3-bit select signal (SEL). Based on the select signal, the ALU performs the selected operation and generates an 8-bit result.
+**Aparna Dubey**
 
-###### 
+B.Tech (Electronics and Communication Engineering)
 
-###### !\[Block Diagram](images/block\_diagram.png)
+Internship Project – Verilog HDL
 
-###### 
-
-###### 
-
-### \## Inputs and Outputs
-
-###### 
-
-#### **### Inputs**
-
-###### 
-
-###### | Signal | Width | Description      |
-
-###### | ------ | ----- | ---------------- |
-
-###### | A      | 8-bit | First Operand    |
-
-###### | B      | 8-bit | Second Operand   |
-
-###### | SEL    | 3-bit | Operation Select |
-
-###### 
-
-#### **### Output**
-
-###### 
-
-###### | Signal | Width | Description |
-
-###### | ------ | ----- | ----------- |
-
-###### | RESULT | 8-bit | ALU Output  |
-
-###### 
-
-###### 
-
-### **## Verilog Modules**
-
-###### 
-
-###### The design follows a modular approach.
-
-###### 
-
-#### **### Modules**
-
-###### 
-
-* ###### adder.v
-* ###### subtractor.v
-* ###### and\_gate.v
-* ###### or\_gate.v
-* ###### xor\_gate.v
-* ###### not\_gate.v
-* ###### shifter.v
-* ###### alu\_top.v
-
-###### 
-
-###### The top-level module (alu\_top.v) integrates all submodules and selects the desired operation according to the value of SEL.
-
-###### 
-
-###### 
-
-### **## Testbench Verification**
-
-###### 
-
-###### A dedicated testbench (alu\_tb.v) was created to verify the functionality of all ALU operations.
-
-###### 
-
-#### **### Test Vectors**
-
-###### 
-
-###### | Test No. | A   | B   | SEL | Operation   | Expected Output |
-
-###### | -------- | --- | --- | --- | ----------- | --------------- |
-
-###### | 1        | 15  | 15  | 000 | ADD         | 30              |
-
-###### | 2        | 255 | 1   | 000 | ADD         | 0 (overflow)    |
-
-###### | 3        | 20  | 10  | 001 | SUB         | 10              |
-
-###### | 4        | 50  | 25  | 001 | SUB         | 25              |
-
-###### | 5        | 170 | 240 | 010 | AND         | 160             |
-
-###### | 6        | 170 | 240 | 011 | OR          | 250             |
-
-###### | 7        | 170 | 240 | 100 | XOR         | 90              |
-
-###### | 8        | 170 | X   | 101 | NOT         | 85              |
-
-###### | 9        | 15  | X   | 110 | LEFT SHIFT  | 30              |
-
-###### | 10       | 15  | X   | 111 | RIGHT SHIFT | 7               |
-
-###### 
-
-###### 
-
-###### 
-
-### **## Simulation Results**
-
-###### 
-
-###### Behavioral simulation was successfully performed in Vivado.
-
-###### 
-
-###### All operations produced the expected outputs.
-
-###### 
-
-###### \### Waveform
-
-###### 
-
-###### !\[Waveform](images/waveform\_simulation.png)
-
-###### 
-
-###### \### Test Vector Waveform
-
-###### 
-
-###### !\[Test Vectors](images/test\_vectors\_waveform.png)
-
-###### 
-
-###### 
-
-### **## RTL Schematic**
-
-###### 
-
-#### **### ALU RTL Schematic**
-
-###### 
-
-###### \[RTL Schematic](images/rtl\_schematic.png)
-
-###### 
-
-#### **### Adder RTL Schematic**
-
-###### 
-
-###### \[Adder RTL](images/adder\_rtl.png)
-
-###### 
-
-###### \---
-
-###### 
-
-### **## Observations**
-
-###### 
-
-* ###### Addition and subtraction operations produced correct arithmetic results.
-* ###### Logical operations (AND, OR, XOR, NOT) behaved as expected.
-* ###### Shift operations correctly shifted the input data by one bit position.
-* ###### The modular design improved readability and maintainability.
-* ###### Simulation results matched the expected outputs for all test cases.
-
-###### 
-
-###### 
-
-### **## Applications**
-
-###### 
-
-* ###### Microprocessors
-* ###### CPUs
-* ###### Embedded Systems
-* ###### FPGA-Based Designs
-* ###### Digital Signal Processing
-* ###### Educational Digital Design Projects
-
-###### 
-
-###### 
-
-### **## Conclusion**
-
-###### 
-
-###### An 8-Bit ALU was successfully designed and verified using Verilog HDL. The ALU performs arithmetic, logical, and shift operations selected through a 3-bit control signal. Functional verification was completed through simulation and waveform analysis in Vivado.
-
-###### 
-
-###### This project demonstrates fundamental digital design concepts, modular hardware development, and verification techniques used in FPGA and ASIC design flows.
-
-###### 
-
-###### 
-
-### **## Author**
-
-###### 
-
-###### Aparna Dubey
-
+2026
