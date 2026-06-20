@@ -274,7 +274,7 @@
 
 ###### 
 
-###### !\[RTL Schematic](images/rtl\_schematic.png)
+###### \[RTL Schematic](images/rtl\_schematic.png)
 
 ###### 
 
@@ -282,7 +282,7 @@
 
 ###### 
 
-###### !\[Adder RTL](images/adder\_rtl.png)
+###### \[Adder RTL](images/adder\_rtl.png)
 
 ###### 
 
