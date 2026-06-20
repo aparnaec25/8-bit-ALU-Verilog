@@ -191,9 +191,3 @@ This project demonstrates fundamental digital design concepts, modular hardware 
 ## Author
 
 **Aparna Dubey**
-
-B.Tech (Electronics and Communication Engineering)
-
-Internship Project – Verilog HDL
-
-2026
