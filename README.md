@@ -69,7 +69,7 @@ The ALU supports the following operations:
 
 The ALU accepts two 8-bit inputs (`A` and `B`) and a 3-bit select signal (`SEL`). Based on the select signal, the ALU performs the selected operation and generates an 8-bit result.
 
-![Block Diagram](./images/block_diagram.png)
+![Block Diagram](images/blockdiagram.png)
 
 ---
 
